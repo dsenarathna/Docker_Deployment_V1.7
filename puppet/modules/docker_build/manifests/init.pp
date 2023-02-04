@@ -25,7 +25,7 @@ require users::teamcityagent
 
   file {
   '/etc/nginx/ssl/cert/ignitionone.com.crt':
-    source => 'puppet:///puppet_dir_master/systems/_LINUX_/etc/nginx/ssl/cert/ignitionone.com.crt',
+    source => 'lookup('secret_key').ignitionone.com.crtignitionone.com.crt::secret',
     owner => 'root',
     group  => 'root',
     mode   => '0644',
@@ -33,7 +33,7 @@ require users::teamcityagent
     require => File['/etc/nginx/ssl/cert'],
     notify => Service['nginx'];
   '/etc/nginx/ssl/key/ignitionone.com.rsa':
-   source => 'puppet:///puppet_dir_master/systems/_LINUX_/etc/nginx/ssl/key/private/ignitionone.com.rsa',
+   source => 'lookup('secret_key').ignitionone.com.crtignitionone.com.rsa::secret',
     owner => 'root',
     group  => 'root',
     mode   => '0644',
